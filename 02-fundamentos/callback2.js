@@ -27,7 +27,7 @@ let getSalario = (empleado, callback) => {
     let salarioDB = salarios.find(salario => salario.id == empleado.id);
 
     if(!salarioDB){
-        callback(`El salario para el id ${id} no existe`, null);
+        callback(`El salario para el id ${empleado.id} no existe`, null);
     }
     else {
         callback(null, {
