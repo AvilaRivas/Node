@@ -1,13 +1,23 @@
-const fs = require('fs');
+const argv = require('./config/yargs').argv;
 
-let base = 2;
-let data = '';
+const {crearArchivo, mostrarTabla} = require('./multiplicar/multiplicar'); //descruturacion del objeto del require, la funcion crearArchivo es creada para este modulo
 
-for(let i = 1; i <= 10; i++){
-    data += `${base} * ${i} = ${base*i} \n`;
+let comando = argv._[0];
+
+switch(comando){
+    case 'listar':
+        mostrarTabla(argv.base, argv.limite)
+            .then(resp => console.log('tabla completada'))
+            .catch(e => console.log(e));
+        break;
+    case 'crear':
+        crearArchivo(argv.base, argv.limite)
+            .then(resp => console.log(`Archivo creado: ${resp}`))
+            .catch(e => console.log(e));
+        break;
+
+    default: console.log('Comando no reconocido');
 }
 
-fs.writeFile(`./tablas/tabla-${base}.txt`, data, (err) => {
-    if(err) throw err;
-    console.log(`El archivo tabla-${base}.txt a sido creado`);
-});
+
+
