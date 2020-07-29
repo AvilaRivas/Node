@@ -4,6 +4,7 @@ const {crearArchivo, mostrarTabla} = require('./multiplicar/multiplicar'); //des
 
 let comando = argv._[0];
 
+
 switch(comando){
     case 'listar':
         mostrarTabla(argv.base, argv.limite)
