@@ -9,7 +9,13 @@ switch(commando) {
         console.log(tarea);
         break;
     case 'listar':
-
+        let listado = porHacer.getListado();
+        for (let tarea of listado) {
+            console.log('========Por hacer ========'.green);
+            console.log(tarea.descripcion);
+            console.log('Estadp: ', tarea.completado);
+            console.log('=========================='.green);
+        };
     break;
     case 'actualizar':
         console.log(argv.descripcion, argv.completado);

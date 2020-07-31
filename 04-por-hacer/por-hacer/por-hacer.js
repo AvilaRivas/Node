@@ -9,6 +9,10 @@ const guardarBD =() => {
     });
 }
 
+const getListado = () => {
+    let listado = cargarDB();
+}
+
 const cargarDB = () => {
 
     try {
@@ -30,5 +34,6 @@ const crear = (descripcion) => {
 }
 
 module.exports = {
-    crear
+    crear,
+    getListado
 }
