@@ -2,7 +2,7 @@ const fs = require('fs');
 
 let listadoPorHacer =[];
 
-const guardarBD =() => {
+const guardarBD = () => {
     let data = JSON.stringify(listadoPorHacer);
     fs.writeFile('./db/data.json',data, (err) => {
         if(err) throw new Error(err);
@@ -10,7 +10,35 @@ const guardarBD =() => {
 }
 
 const getListado = () => {
-    let listado = cargarDB();
+    cargarDB();
+    return listadoPorHacer;
+}
+
+const borrar = (descripcion) => {
+    cargarDB();
+    let index = listadoPorHacer.findIndex(x => x.descripcion === descripcion);
+    if(index >= 0){
+        listadoPorHacer.splice(index,1);
+        guardarBD();
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+const actualizar = (descripcion, completado = true) => {
+    cargarDB();
+    let index = listadoPorHacer.findIndex(tarea => tarea.descripcion === descripcion);
+    if(index >= 0){
+        console.log(index);
+        listadoPorHacer[index].completado = completado;
+        guardarBD();
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 const cargarDB = () => {
@@ -35,5 +63,7 @@ const crear = (descripcion) => {
 
 module.exports = {
     crear,
-    getListado
+    getListado,
+    actualizar,
+    borrar
 }

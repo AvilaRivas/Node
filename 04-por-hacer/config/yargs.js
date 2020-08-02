@@ -1,19 +1,24 @@
+const descripcion = {
+    demand: true,
+    alias: 'd'
+}
+
+const completado = {
+    alias: 'c',
+    default: true,
+    type: 'boolean'
+}
+
 const argv = require('yargs')
     .command('crear','Crear elemento por hacer', {
-        descripcion: {
-            demand: true,
-            alias: 'd'
-        }
+        descripcion
     })
     .command('actualizar', 'Actualiza el estado compleado de una tarea', {
-        descripcion: {
-            demand: true,
-            alias: 'd'
-        },
-        completado: {
-            alias: 'c',
-            default: true
-        }
+        descripcion,
+        completado
+    })
+    .command('borrar', 'Borrara un elemento', {
+        descripcion
     })
     .help()
     .argv;

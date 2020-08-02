@@ -1,4 +1,5 @@
 const argv = require("./config/yargs").argv;
+const colors = require('colors');
 const porHacer = require('./por-hacer/por-hacer');
 
 let commando = argv._[0];
@@ -16,10 +17,15 @@ switch(commando) {
             console.log('Estadp: ', tarea.completado);
             console.log('=========================='.green);
         };
-    break;
+        break;
     case 'actualizar':
-        console.log(argv.descripcion, argv.completado);
-    break;
+        let actualizado = porHacer.actualizar(argv.descripcion, argv.completado);
+        console.log(actualizado);
+        break;
+    case 'borrar':
+        let resp = porHacer.borrar(argv.descripcion);
+        console.log(`Elemento borrado?: ${resp}`);
+        break;
     default:
         console.log('Comando no permitido');
 }
