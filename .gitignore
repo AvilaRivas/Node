@@ -1,4 +1,5 @@
 03-bases-node/node_modules/
 03-bases-node/tablas/*.txt
 04-por-hacer/node_modules/
-05-clima-mundo/node_modules
+05-clima-mundo/node_modules/
+06-webserver/node_modules/
