@@ -13,6 +13,13 @@ app.get('/', (req, res) => {
         anio: new Date().getFullYear()
     })
 })
+
+app.get('/about', (req, res) => {
+    res.render('about',{
+        nombre: 'victor',
+        anio: new Date().getFullYear()
+    })
+})
  
 app.listen(3000, () => {
     console.log('escuchando peticiones en el puerto 3000');
