@@ -2,9 +2,9 @@
     "name": "06-webserver",
     "version": "1.0.0",
     "description": "",
-    "main": "app.js",
+    "main": "./06-webserver",
     "scripts": {
-      "start": "nodemon /06-webserver/server.js -e js,hbs,html,css"
+      "start": "nodemon ./06-webserver/server.js -e js,hbs,html,css"
     },
     "author": "",
     "license": "ISC",
